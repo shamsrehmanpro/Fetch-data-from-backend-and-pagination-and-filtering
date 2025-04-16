@@ -10,20 +10,9 @@ const App = () => {
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(1)
   const [totalData, setTotalData] = useState([])
-  const [filter, setFilter] = useState('')
   const [filterData, setFilterData] = useState([])
 
-  const filterFunction = ()=>{
-    if (!filter) {
-      setData(data)
-      return
-    }
-    const filterResult = totalData.filter((item)=>
-    item.name.toLowerCase().includes(filter.toLowerCase()) || 
-    item.category.toLowerCase().includes(filter.toLowerCase())
-    )
-    setData(filterResult)
-  }
+  
 
   
   const fetchData = async()=>{
@@ -50,9 +39,9 @@ const App = () => {
       <div className='bg-white rounded-lg shadow-md p-6'>
       <h1 className='text-2xl font-semibold mb-4 text-gray-800'>Data from Backend </h1>
       <Filter 
-          setFilter={setFilter}
-          Filter={filter}
-          filterFunction = {filterFunction}
+          setData={setData}
+          totalData={totalData}
+          fetchData ={fetchData}
       />
       <DataDisplay
        data={data}
